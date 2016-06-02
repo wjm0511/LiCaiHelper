@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<string-array name="year_array">
+        <item>1年</item>
+        <item>2年</item>
+        <item>3年</item>
+        <item>4年</item>
+        <item>5年</item>
+        <item>6年</item>
+        <item>7年</item>
+        <item>8年</item>
+        <item>9年</item>
+        <item>10年</item>
+        <item>11年</item>
+        <item>12年</item>
+        <item>13年</item>
+        <item>14年</item>
+        <item>15年</item>
+        <item>16年</item>
+        <item>17年</item>
+        <item>18年</item>
+        <item>19年</item>
+        <item>20年</item>
+        <item>21年</item>
+        <item>22年</item>
+        <item>23年</item>
+        <item>24年</item>
+        <item>25年</item>
+        <item>26年</item>
+        <item>27年</item>
+        <item>28年</item>
+        <item>29年</item>
+        <item>30年</item>
+    </string-array>
+    <string-array name="month_array">
+        <item>0月</item>
+        <item>1月</item>
+        <item>2月</item>
+        <item>3月</item>
+        <item>4月</item>
+        <item>5月</item>
+        <item>6月</item>
+        <item>7月</item>
+        <item>8月</item>
+        <item>9月</item>
+        <item>10月</item>
+        <item>11月</item>
+    </string-array>
+
+    <string-array name="ll_array">
+        <item>三个月</item>
+        <item>半年</item>
+        <item>一年</item>
+        <item>两年</item>
+        <item>三年</item>
+        <item>五年</item>
+    </string-array>
+    <string-array name="sl_array">
+        <item>一年</item>
+        <item>三年</item>
+        <item>五年</item>
+    </string-array>
+    <string-array name="pd_array">
+        <item>每月</item>
+        <item>每季</item>
+        <item>每半年</item>
+    </string-array>
+    <string-array name="loadtype_array">
+        <item>商业贷款</item>
+        <item>公积金</item>
+    </string-array>
+    <string-array name="houselt_array">
+        <item>商业贷款</item>
+        <item>公积金</item>
+    </string-array>
+    <string-array name="opaytype_array">
+        <item>等额本息</item>
+        <item>等额本金</item>
+    </string-array>
+    <string-array name="housept_array">
+        <item>等额本息</item>
+        <item>等额本金</item>
+    </string-array>
+    <string-array name="pt_array">
+        <item>一次提前还款</item>
+        <item>部分提前还款</item>
+    </string-array>
+    <string-array name="dt_array">
+        <item>缩短还款期限,月还款额不变</item>
+        <item>减少月还款额,还款期限不变</item>
+    </string-array>
+</resources>

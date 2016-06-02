@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/back"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="40dp"
+      android:orientation="horizontal"
+      android:background="@drawable/titleback"
+      android:divider="#0000">
+
+    <Button
+        android:id="@+id/back"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:background="@drawable/fanhui"
+        android:layout_marginLeft="20dp"
+        android:layout_gravity="center_vertical"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="40dp"
+        android:textSize="22dp"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:text="设置"
+        android:layout_gravity="center_vertical"/>
+  </LinearLayout>
+
+
+  <LinearLayout
+      android:layout_width="260dp"
+      android:layout_height="40dp"
+      android:background="@drawable/ydg_textarea"
+      android:layout_marginTop="50dp">
+
+    <ImageView
+        android:src="@drawable/ydg_icon_income"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </ImageView>
+
+    <Button
+        android:id="@+id/incomeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="收入科目"
+        android:background="#00000000"
+        android:textColor="@color/black"
+        android:textSize="22dp"
+        android:layout_marginLeft="40dp">
+    </Button>
+
+  </LinearLayout>
+  <LinearLayout
+      android:layout_width="260dip"
+      android:layout_height="40dip"
+      android:background="@drawable/ydg_textarea"
+      android:layout_marginTop="15dip">
+    <ImageView
+        android:src="@drawable/ydg_icon_outlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+    </ImageView>
+    <Button
+        android:id="@+id/spendButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="支出科目"
+        android:background="#00000000"
+        android:textColor="@color/black"
+        android:textSize="22dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="40dp"
+        >
+    </Button>
+  </LinearLayout>
+
+  <LinearLayout
+      android:layout_width="260dip"
+      android:layout_height="40dp"
+      android:background="@drawable/ydg_textarea"
+      android:layout_marginTop="15dp">
+    <ImageView
+        android:src="@drawable/ydg_bank_book"
+        android:layout_marginLeft="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+    </ImageView>
+    <Button
+        android:id="@+id/zhanghuButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="账      户"
+        android:background="#00000000"
+        android:textColor="@color/black"
+        android:textSize="22dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="50dp"
+        >
+    </Button>
+  </LinearLayout>
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:orientation="vertical"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="100dp"
+      android:gravity="center">
+
+    <Button
+        android:id="@+id/tixingButton"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="提醒设置"
+        android:background="@drawable/btnshap"
+        android:textColor="@color/black"
+        android:textSize="22dp">
+    </Button>
+
+      <Button
+          android:id="@+id/jianyiButton"
+          android:layout_width="200dp"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="15dp"
+          android:text="建        议"
+          android:background="@drawable/btnshap"
+          android:textColor="@color/black"
+          android:textSize="22dp">
+      </Button>
+
+    <Button
+        android:id="@+id/aboutButton"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="关        于"
+        android:background="@drawable/btnshap"
+        android:textColor="@color/black"
+        android:textSize="22dp">
+    </Button>
+  </LinearLayout>
+</LinearLayout>

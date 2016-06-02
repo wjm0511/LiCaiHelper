@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/back">
+
+    <LinearLayout
+        android:id="@+id/LinearLayout01"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:background="@drawable/titleback">
+        <Button
+            android:id="@+id/back"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:background="@drawable/fanhui"
+            android:layout_marginLeft="20dp"
+            android:layout_gravity="center_vertical">
+        </Button>
+        <TextView
+            android:layout_width="250dp"
+            android:layout_marginLeft="10dp"
+            android:layout_height="wrap_content"
+            android:textSize="22dp"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:text="便签"
+            android:layout_gravity="center_vertical"/>
+
+        <Button
+            android:id="@+id/newNote"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/addtixing"/>
+    </LinearLayout>
+
+
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_below="@+id/LinearLayout01">
+
+    </ListView>
+
+
+</RelativeLayout>

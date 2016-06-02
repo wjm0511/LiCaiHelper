@@ -1,0 +1,189 @@
+<resources>
+    <string name="app_name">理财小助手</string>
+    <string name="fanhui">返回</string>
+    <string name="jine">金额</string>
+    <string name="shouzhi">收支</string>
+    <string name="kemu">科目</string>
+    <string name="riqi">日期</string>
+    <string name="fangshi">方式</string>
+    <string name="didian">地点</string>
+    <string name="beizhu">备注</string>
+    <string name="baocun">保存</string>
+    <string name="again">再来一笔</string>
+    <string name="shourutongji">收入统计</string>
+    <string name="zhichutongji">支出统计</string>
+    <string name="selectlb">选择统计类型</string>
+    <string name="hello">Hello World, LiCaiActivity!</string>
+
+    <string name="default_number">0.0</string>
+    <string name="Cal_page">计算</string>
+    <string name="Baodian_page">宝典</string>
+    <string name="yuyin_page">语音输入</string>
+    <string name="tixing_page">提醒</string>
+    <string name="baobiao_page">报表</string>
+    <string name="zuji_page">足迹</string>
+    <string name="baobiaolist_page">列表</string>
+
+    <string name="jinri">今日收支情况</string>
+    <string name="benzhou">本周收支总情况</string>
+    <string name="benyue">本月收支总情况</string>
+    <string name="shangzhou">上周收支总情况</string>
+    <string name="shangyue">上月收支总情况</string>
+    <string name="qiansanyue">前三个月收支情况</string>
+    <string name="jinnian">今年收支总情况</string>
+    <string name="qunian">去年收支总情况</string>
+    <string name="quanbu">全部收支情况</string>
+    <string name="xiangxi">详细信息</string>
+    <string name="bok">确定</string>
+    <string name="cancel">取消</string>
+    <string name="income">日常收入</string>
+    <string name="spend">日常支出</string>
+    <string name="fangdailei">房贷类</string>
+    <string name="fangdai">房贷</string>
+    <string name="tiqianhuankuan">提前还款</string>
+    <string name="yinhanglei">银行类</string>
+    <string name="huoqichuxu">活期储蓄</string>
+    <string name="lingcunzhengqu">零存整取</string>
+    <string name="zhengcunzhengqu">整存整取</string>
+    <string name="zhengcunlingqu">整存零取</string>
+    <string name="back">返回</string>
+    <string name="jisuan">计算</string>
+    <string name="lt">贷款类型</string>
+    <string name="Bamt">贷款金额</string>
+    <string name="loadyears">贷款期限</string>
+    <string name="shuru">手动输入</string>
+    <string name="strBrate">贷款利率</string>
+    <string name="pt">还款方式</string>
+    <string name="strB">商业贷款</string>
+    <string name="strwy">万元</string>
+    <string name="month">月</string>
+    <string name="year">年</string>
+    <string name="debx">等额本息</string>
+    <string name="num0">0</string>
+    <string name="num1">1</string>
+    <string name="num2">2</string>
+    <string name="num3">3</string>
+    <string name="num4">4</string>
+    <string name="num5">5</string>
+    <string name="num6">6</string>
+    <string name="num7">7</string>
+    <string name="num8">8</string>
+    <string name="num9">9</string>
+    <string name="result">计算结果</string>
+    <string name="list">详情</string>
+    <string name="intAmt">累计支付利息</string>
+    <string name="fullAmt">累计还款总额</string>
+    <string name="omonth">原贷款期限</string>
+    <string name="oloadtype">原贷款类型</string>
+    <string name="opaytype">原贷款方式</string>
+    <string name="oloadamt">原贷款金额</string>
+    <string name="firstyear">第一次还款时间</string>
+    <string name="earlyyear">预计提前还款时间</string>
+    <string name="resultlist">结果列表</string>
+    <string name="nian">20年</string>
+    <string name="yue">0月</string>
+
+    <string name="hktime">2012年3月</string>
+    <string name="tqhktime">2012年3月</string>
+    <string name="hkmode">一次提前还款</string>
+
+    <string name="payedIntAmt">已还利息额</string>
+    <string name="payedSumAmt">已还款总额</string>
+    <string name="saveIntAmt">节省利息支出</string>
+    <string name="curMonAmt">该月还款额</string>
+
+    <string name="inputDate">存入日期</string>
+    <string name="inputAmt">存入金额</string>
+    <string name="yearRate">年利率</string>
+    <string name="outputDate">提取日期</string>
+    <string name="bdate">2012-3-16</string>
+    <string name="taxSum">扣除利息税总额 (暂不征收)</string>
+    <string name="fullSum">实得本息总额</string>
+
+    <string name="savetime">储蓄存期</string>
+    <string name="savedate">初始存入日期</string>
+    <string name="eachsaveamt">每月存入金额</string>
+    <string name="oneyear">一年</string>
+    <string name="allsaveamt">累计存入金额</string>
+    <string name="allamt">到期本息总额</string>
+
+    <string name="threemonth">三个月</string>
+    <string name="zqpd">支取频度</string>
+    <string name="everymonth">每月</string>
+    <string name="lixiamt">所得利息总额</string>
+    <string name="eachAmt">每次支取金额</string>
+
+
+
+    <string name="jijin">公基金</string>
+    <string name="zuhe">组合型</string>
+    <string name="jijinmoney">公基金贷款金额</string>
+    <string name="jijinrate">公基金贷款利率</string>
+    <string name="sdrate">商贷支付利息</string>
+    <string name="jijinlixi">公基金支付利息</string>
+
+    <string name="bdtzlc">投资理财</string>
+    <string name="bdstartread">开始阅读</string>
+    <string name="bdcontinue">继续阅读</string>
+    <string name="bdhelp">帮助</string>
+    <string name="bdselect">请选择：</string>
+    <string name="bd_lchapter">上一章</string>
+    <string name="bd_lpage">上一页</string>
+    <string name="bd_npage">下一页</string>
+    <string name="bd_nchapter">下一章</string>
+    <string name="first1">一、基础概念篇\n1、财富的概念</string>
+    <string name="first2">2、投资的概念</string>
+    <string name="first3">3、家庭理财的概念和目的</string>
+    <string name="first4">4、理财的时机</string>
+    <string name="first5">5、理财的步骤</string>
+    <string name="second1">二、理财谋略篇\n1、投资基本规则</string>
+    <string name="second2">2、理财通用原则</string>
+    <string name="second3">3、投资分类及相关知识</string>
+    <string name="second4">4、从学员案例中谈理财规划的盲点</string>
+    <string name="inputnum">你还可以输入100字</string>
+    <string name="voiceWarning">使用智能语音记账功能会产生网络流量, 请按住下方语音按钮使用本功能</string>
+    <string name="voiceBtnPressSpeak">请点击说话</string>
+
+    <string name="tixing">提醒</string>
+    <string name="edit">编辑</string>
+
+    <string name="zuji">足迹</string>
+
+    <string name="meiday">每天</string>
+    <string name="meimonth">每月</string>
+    <string name="meiweek">每周</string>
+    <string name="zhanghu">账户</string>
+    <string name="xianshi">显示报表</string>
+    <string name="back_btn">返回</string>
+
+    <string name="userback">用户反馈</string>
+    <string name="welcomecontent">欢迎您提出宝贵的意见和建议，您留下的每个字都将用来改善我们的服务。</string>
+    <string name="inputjianyi">请输入您的反馈意见(字数500字以内)</string>
+    <string name="lxmail">联系邮箱：</string>
+    <string name="submit">提交反馈</string>
+
+
+
+
+
+
+    <string name="shezhi">设置</string>
+    <string name="shourukm">收入科目管理</string>
+    <string name="zhichukm">支出科目管理</string>
+
+    <string name="et">轻击添加</string>
+    <string name="add">添加</string>
+    <string name="zhanghuguanli">账户管理</string>
+
+
+    <string name="yusuan">月度预算</string>
+    <string name="zong">总预算</string>
+    <string name="mode">我的现金</string>
+    <string name="del">删除</string>
+
+
+
+    <string name="jizhang">新增账务</string>
+    <string name="sz">收支</string>
+    <string name="dianji"> 点击插入日期</string>
+</resources>

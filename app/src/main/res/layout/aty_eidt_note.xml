@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/back">
+
+
+    <LinearLayout
+        android:id="@+id/LinearLayout01"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:background="@drawable/titleback">
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:background="@drawable/fanhui"
+            android:layout_marginLeft="20dp"
+            android:layout_gravity="center_vertical">
+        </Button>
+        <TextView
+            android:layout_width="250dp"
+            android:layout_marginLeft="10dp"
+            android:layout_height="wrap_content"
+            android:textSize="22dp"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:text="添加便签"
+            android:layout_gravity="center_vertical"/>
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/save"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout02"
+        android:layout_below="@+id/LinearLayout01"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:orientation="vertical">
+        <EditText
+            android:id="@+id/etName"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:textSize="20dp"
+            android:gravity="center|left"
+            android:hint="标题"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:background="@drawable/editsharptranparent"
+            android:singleLine="true" >
+            <requestFocus />
+        </EditText>
+
+        <EditText
+            android:id="@+id/etContent"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="180dp"
+            android:textSize="18dp"
+            android:background="@drawable/editsharptranparent"
+            android:gravity="top|left" />
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/LinearLayout03"
+        android:layout_below="@+id/LinearLayout02"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp">
+
+        <Button
+            android:id="@+id/btnAddPhoto"
+            android:layout_width="36dp"
+            android:layout_height="24dp"
+            android:background="@drawable/image"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"/>
+
+        <Button
+            android:id="@+id/btnAddVideo"
+            android:layout_width="36dp"
+            android:layout_height="24dp"
+            android:layout_toLeftOf="@+id/btnAddPhoto"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/vedio" />
+
+    </RelativeLayout>
+
+
+
+    <ListView
+        android:id="@android:id/list"
+        android:layout_below="@+id/LinearLayout03"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </ListView>
+
+</RelativeLayout>

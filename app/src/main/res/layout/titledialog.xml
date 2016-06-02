@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:layout_marginLeft="20dp"
+	android:layout_marginRight="20dp"
+
+	android:orientation="vertical"
+	android:background="@color/white"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical">
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="40dp"
+			android:text="选择标题"
+			android:layout_marginRight="5dp"
+			android:layout_marginBottom="5dp"
+			android:textSize="28dp"
+			android:background="@color/pink"
+			android:textColor="@color/black">
+		</TextView>
+		<TextView
+			android:id="@+id/newTitle"
+			android:layout_width="match_parent"
+			android:layout_height="30dp"
+			android:layout_marginTop="5dp"
+			android:layout_marginBottom="5dp"
+			android:layout_marginLeft="10dp"
+			android:layout_marginRight="10dp"
+			android:text="新建标题"
+			android:textSize="22dp"/>
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="1dp"
+			android:background="@color/black"/>
+	</LinearLayout>
+	<ListView
+		android:id="@+id/ListView01"
+		android:layout_width="200dp"
+		android:layout_marginTop="5dp"
+		android:layout_marginLeft="10dp"
+		android:layout_marginRight="10dp"
+		android:layout_marginBottom="5dp"
+		android:layout_height="wrap_content"
+		android:cacheColorHint="#00000000">
+	</ListView>
+
+</LinearLayout>
+

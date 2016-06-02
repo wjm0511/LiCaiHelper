@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	android:background="@drawable/back">
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="40dp"
+		android:orientation="horizontal"
+		android:background="@drawable/titleback"
+		android:divider="#0000">
+
+		<Button
+			android:id="@+id/back"
+			android:layout_width="26dp"
+			android:layout_height="26dp"
+			android:background="@drawable/fanhui"
+			android:layout_marginLeft="20dp"
+			android:layout_gravity="center_vertical"/>
+
+		<TextView
+			android:id="@+id/jizhangText"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginRight="40dp"
+			android:textSize="22dp"
+			android:textColor="@color/black"
+			android:gravity="center"
+			android:text="建议"
+			android:layout_gravity="center_vertical"/>
+	</LinearLayout>
+
+
+
+	<EditText
+		android:id="@+id/EditText01"
+		android:layout_width="match_parent"
+		android:layout_height="270dp"
+		android:layout_marginLeft="20dp"
+		android:layout_marginTop="20dp"
+		android:layout_marginRight="20dp"
+		android:gravity="top"
+		android:hint="@string/inputjianyi"
+		android:background="@drawable/editsharptranparent">
+	</EditText>
+
+	<Button
+		android:text="@string/submit"
+		android:id="@+id/submit"
+		android:layout_width="match_parent"
+		android:layout_height="50dp"
+		android:layout_marginTop="20dp"
+		android:layout_marginLeft="50dp"
+		android:layout_marginRight="50dp"
+		android:background="@drawable/btnshap"
+		android:textSize="20dip"
+		>
+	</Button>
+	<Button
+		android:text="@string/cancel"
+		android:id="@+id/cancel"
+		android:layout_width="match_parent"
+		android:layout_height="50dip"
+		android:layout_marginTop="20dp"
+		android:layout_marginLeft="50dp"
+		android:layout_marginRight="50dp"
+		android:background="@drawable/btnshap"
+		android:textSize="20dp">
+	</Button>
+</LinearLayout>

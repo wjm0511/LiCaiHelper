@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:orientation="vertical"
+  >
+  <TextView 
+	android:text="@string/bdselect" 
+	android:id="@+id/bdselect" 
+	android:layout_width="fill_parent" 
+	android:layout_height="wrap_content"
+	android:layout_gravity="left"
+	android:textColor="#ff0017ef"
+	android:textSize="20dip"
+	>
+	</TextView>
+	<ListView 
+		android:id="@+id/ListView01" 
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:textSize="8dip"
+		android:textColor="#ffffffff"
+		android:layout_marginTop="10.0dip"
+		android:layout_alignParentTop="true"
+		android:gravity="center"
+		>
+	</ListView>
+</LinearLayout>

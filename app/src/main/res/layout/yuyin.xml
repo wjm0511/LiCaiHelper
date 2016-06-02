@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	android:background="@drawable/back">
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="40dp"
+		android:orientation="horizontal"
+		android:background="@drawable/titleback"
+		android:divider="#0000">
+
+		<Button
+			android:id="@+id/fanhui"
+			android:layout_width="26dp"
+			android:layout_height="26dp"
+			android:background="@drawable/fanhui"
+			android:layout_marginLeft="20dp"
+			android:layout_gravity="center_vertical"/>
+
+		<TextView
+			android:id="@+id/jizhangText"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginRight="40dp"
+			android:textSize="22dp"
+			android:textColor="@color/black"
+			android:gravity="center"
+			android:text="语音"
+			android:layout_gravity="center_vertical"/>
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="325dip"
+		android:orientation="vertical"
+		android:layout_marginTop="30dip"
+		android:layout_marginLeft="40dip"
+		android:layout_marginRight="40dip"
+		android:layout_gravity="center">
+		<TextView
+			android:text="@string/inputnum"
+			android:id="@+id/inputnum"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="right"
+			android:paddingRight="20dip"
+			android:textColor="@color/innum"
+			>
+		</TextView>
+		<EditText
+			android:text=""
+			android:id="@+id/EditText01"
+			android:layout_width="280dip"
+			android:layout_height="300dip"
+			android:layout_gravity="center_horizontal"
+			android:background="@drawable/yy_bg_voice_edit"
+			android:gravity="top"
+			android:hint="使用智能语音记账功能会产生网络流量, 请按住下方语音按钮使用本功能"
+			>
+		</EditText>
+
+	</LinearLayout>
+
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="43dip"
+		android:gravity="bottom|center"
+		android:layout_marginTop="20dp">
+
+		<ImageButton
+			android:id="@+id/ImageButton01"
+			android:layout_width="100dp"
+			android:layout_height="43dp"
+			android:src="@drawable/yy_voice_ok"
+			android:background="@color/yybottom"
+			android:layout_gravity="bottom">
+		</ImageButton>
+
+		<Button
+			android:text="@string/voiceBtnPressSpeak"
+			android:id="@+id/voiceBtnPressSpeak"
+			android:layout_width="130dp"
+			android:layout_height="43dp"
+			android:background="@color/yybottom"
+			android:textColor="@color/white"
+			android:gravity="center"
+			android:layout_gravity="bottom"
+			android:layout_marginLeft="1dp">
+		</Button>
+
+		<ImageButton
+			android:id="@+id/ImageButton02"
+			android:layout_width="100dp"
+			android:layout_height="43dp"
+			android:src="@drawable/ic_back_sli"
+			android:background="@color/yybottom"
+			android:layout_gravity="bottom"
+			android:layout_marginLeft="1dip"
+			>
+		</ImageButton>
+	</LinearLayout>
+
+
+</LinearLayout>
