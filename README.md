@@ -1,2 +1,5 @@
-# LiCaiHelper
-# LiCaiHelper
+# 理财小助手
+# 我的第一个Android App
+
+# 哈哈！看了一个月的书，终于要实践一把了！！！
+# 这个App主要是为了练手，包括Java代码编写，还有Android学习的一些东西，App里面的东西比较杂碎，但是基本上覆盖了Android Native的东西，个人认为还是有一些价值的。
