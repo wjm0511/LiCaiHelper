@@ -21,7 +21,7 @@ import com.example.wjm.licaihelper.R;
 import java.util.Calendar;
 
 /**
- * Created by Yao on 2016/5/20.
+ * Created by Wjm on 2016/5/20.
  */
 public class CalFragmentZCLQ extends Fragment {
 
@@ -30,7 +30,7 @@ public class CalFragmentZCLQ extends Fragment {
     private EditText lilv;   //存款利率
     private Button frequency;  //支取频度
 
-    private TextView jsCal;
+    private Button zclqCal;
 
     private double durdate; //存款持续时间
     private int pindu;      //提取频度
@@ -48,7 +48,7 @@ public class CalFragmentZCLQ extends Fragment {
         jine=(EditText)view.findViewById(R.id.jine);
         lilv=(EditText)view.findViewById(R.id.lilv);
         frequency=(Button)view.findViewById(R.id.everymonth);
-        jsCal=(TextView)getActivity().findViewById(R.id.jscal);
+        zclqCal=(Button)view.findViewById(R.id.zclqCal);
 
 
         savetime.setOnClickListener(new View.OnClickListener() {
@@ -64,17 +64,6 @@ public class CalFragmentZCLQ extends Fragment {
                                     public void onClick(DialogInterface dialog, int which) {
                                         //对话框关闭时的业务代码
                                         savetime.setText(getResources().getStringArray(R.array.sl_array)[which]);
-                                        switch (which) {
-                                            case 0:
-                                                durdate = 1 * 12;
-                                                break;
-                                            case 1:
-                                                durdate = 3 * 12;
-                                                break;
-                                            case 2:
-                                                durdate = 5 * 12;
-                                                break;
-                                        }
                                     }
                                 }
                         ).create().show();
@@ -95,25 +84,13 @@ public class CalFragmentZCLQ extends Fragment {
                             public void onClick(DialogInterface dialog, int which) {
                                 //对话框关闭时的业务代码
                                 frequency.setText(getResources().getStringArray(R.array.pd_array)[which]);
-                                switch(which)
-                                {
-                                    case 0:
-                                        pindu=1;
-                                        break;
-                                    case 1:
-                                        pindu=3;
-                                        break;
-                                    case 2:
-                                        pindu=6;
-                                        break;
-                                }
                             }
                         }
                 ).create().show();
             }
         });
 
-        jsCal.setOnClickListener(new View.OnClickListener() {
+        zclqCal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if((Double.parseDouble(jine.getText().toString()))<0.1)
@@ -122,9 +99,6 @@ public class CalFragmentZCLQ extends Fragment {
                 }
                 else
                 {
-                    times=(float)durdate/pindu;
-                    inputmoney=Double.parseDouble(jine.getText().toString())*10000;
-                    yearrate=(Double.parseDouble(lilv.getText().toString()))/100;
                     goZCLQResult();
                 }
             }
@@ -147,6 +121,13 @@ public class CalFragmentZCLQ extends Fragment {
                 dialog.dismiss();
             }
         });
+
+        pindu=getPinDu(frequency.getText().toString().trim());
+        durdate=getMonth(savetime.getText().toString().trim());
+
+        times=(float)durdate/pindu;
+        inputmoney=Double.parseDouble(jine.getText().toString())*10000;
+        yearrate=(Double.parseDouble(lilv.getText().toString()))/100;
         double lixisum=(inputmoney+inputmoney/times)/2*times*pindu*(yearrate/12);
         double perzhiqu=inputmoney/times;
         String str1=String.valueOf(lixisum);
@@ -156,5 +137,23 @@ public class CalFragmentZCLQ extends Fragment {
 
         dialog.create();
         dialog.show();
+    }
+
+    private static int getPinDu(String str){
+        if(str.equals("每月"))
+            return 1;
+        else if(str.equals("每季"))
+            return 3;
+        else
+            return 6;
+    }
+
+    private  static int getMonth(String str){
+        if(str.equals("一年"))
+            return 1*12;
+        else if(str.equals("三年"))
+            return 3*12;
+        else
+            return 5*12;
     }
 }

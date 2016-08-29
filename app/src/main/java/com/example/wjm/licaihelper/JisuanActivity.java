@@ -19,10 +19,9 @@ public class JisuanActivity extends AppCompatActivity implements RadioGroup.OnCh
     private RadioButton tqhk;
     private RadioButton hqck;
     private RadioButton lczq;
-    private RadioButton zczq;
     private RadioButton zclq;
+    private RadioButton zczq;
     private Button back;
-    private TextView jscal;
     private ViewPager vpager;
 
     private MyFragmentPagerAdapter mAdapter;
@@ -34,7 +33,6 @@ public class JisuanActivity extends AppCompatActivity implements RadioGroup.OnCh
     public static final int PAGE_FOUR = 3;
     public static final int PAGE_FIVE = 4;
     public static final int PAGE_SIX = 5;
-
 
 
     @Override
@@ -61,9 +59,8 @@ public class JisuanActivity extends AppCompatActivity implements RadioGroup.OnCh
         tqhk = (RadioButton) findViewById(R.id.tqhk);
         hqck = (RadioButton) findViewById(R.id.hqck);
         lczq = (RadioButton) findViewById(R.id.lczq);
-        zczq = (RadioButton) findViewById(R.id.zczq);
         zclq = (RadioButton) findViewById(R.id.zclq);
-        jscal=(TextView)findViewById(R.id.jscal);
+        zczq = (RadioButton) findViewById(R.id.zczq);
         tab_bar.setOnCheckedChangeListener(this);
 
         vpager = (ViewPager) findViewById(R.id.vpager);
@@ -87,10 +84,10 @@ public class JisuanActivity extends AppCompatActivity implements RadioGroup.OnCh
             case R.id.lczq:
                 vpager.setCurrentItem(PAGE_FOUR);
                 break;
-            case R.id.zczq:
+            case R.id.zclq:
                 vpager.setCurrentItem(PAGE_FIVE);
                 break;
-            case R.id.zclq:
+            case R.id.zczq:
                 vpager.setCurrentItem(PAGE_SIX);
                 break;
         }
@@ -124,10 +121,10 @@ public class JisuanActivity extends AppCompatActivity implements RadioGroup.OnCh
                     lczq.setChecked(true);
                     break;
                 case PAGE_FIVE:
-                    zczq.setChecked(true);
+                    zclq.setChecked(true);
                     break;
                 case PAGE_SIX:
-                    zclq.setChecked(true);
+                    zczq.setChecked(true);
                     break;
             }
         }

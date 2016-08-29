@@ -13,8 +13,8 @@
 		android:background="@drawable/titleback">
 		<Button
 			android:id="@+id/back"
-			android:layout_width="26dp"
-			android:layout_height="26dp"
+			android:layout_width="20dp"
+			android:layout_height="20dp"
 			android:background="@drawable/fanhui"
 			android:layout_marginLeft="20dp"
 			android:layout_gravity="center_vertical">
@@ -63,7 +63,7 @@
 				android:id="@+id/bleft"
 				android:layout_width="26dp"
 				android:layout_height="26dp"
-				android:background="@drawable/myselector_zj_left"
+				android:background="@drawable/left"
 				android:layout_marginLeft="30dp"
 				android:layout_gravity="center_vertical">
 			</Button>
@@ -82,7 +82,7 @@
 				android:id="@+id/bright"
 				android:layout_width="26dp"
 				android:layout_height="26dp"
-				android:background="@drawable/myselector_zj_right"
+				android:background="@drawable/right"
 				android:layout_marginLeft="10dp"
 				android:layout_gravity="center_vertical">
 			</Button>
@@ -93,8 +93,8 @@
 				android:layout_height="30dp"
 				android:layout_marginRight="30dp"
 				android:layout_marginLeft="35dp"
-				android:background="@drawable/editsharptranparent"
-				android:textSize="20dp"
+				android:background="@drawable/btnshaocolor1"
+				android:textSize="18dp"
 				android:layout_gravity="center_vertical">
 			</Button>
 		</LinearLayout>

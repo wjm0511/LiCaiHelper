@@ -2,7 +2,6 @@ package com.example.wjm.licaihelper.fragment;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.os.SystemClock;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.example.wjm.licaihelper.R;
 
@@ -22,13 +20,13 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * Created by Yao on 2016/5/20.
+ * Created by Wjm on 2016/5/20.
  */
 public class CalFragmentHQCK extends Fragment {
 
     private Button indate;
     private Button outdate;
-    private TextView jsCal;
+    private Button hqckCal;
     private EditText jine;
     private EditText lilv;
 
@@ -48,17 +46,18 @@ public class CalFragmentHQCK extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fg_hqck_content,container,false);
         indate=(Button)view.findViewById(R.id.indate);
-        indate.setText(curdate);
         lilv=(EditText)view.findViewById(R.id.lilv);
         jine=(EditText)view.findViewById(R.id.jine);
         outdate=(Button)view.findViewById(R.id.outdate);
+        hqckCal=(Button)view.findViewById(R.id.hqckCal);
+
+        indate.setText(curdate);
         outdate.setText(curdate);
-        jsCal=(TextView)getActivity().findViewById(R.id.jscal);
 
         indate.setOnClickListener(new View.OnClickListener() {
                                       @Override
                                       public void onClick(View v) {
-                                          c=Calendar.getInstance();//获取日期对象
+                                          //c=Calendar.getInstance();//获取日期对象
                                           new DatePickerDialog(
                                                   getActivity(),
                                                   new DatePickerDialog.OnDateSetListener()
@@ -83,7 +82,7 @@ public class CalFragmentHQCK extends Fragment {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        c=Calendar.getInstance();//获取日期对象
+                        //c=Calendar.getInstance();//获取日期对象
                         new DatePickerDialog(
                                 getActivity(),
                                 new DatePickerDialog.OnDateSetListener()
@@ -105,12 +104,7 @@ public class CalFragmentHQCK extends Fragment {
                 }
         );
 
-        inputdate=StringToDate(indate.getText().toString(),"yyyy-MM-dd");
-        inputmoney=Double.parseDouble(jine.getText().toString())*10000;
-        yearrate=(Double.parseDouble(lilv.getText().toString()))/100;
-        outputdate=StringToDate(outdate.getText().toString(),"yyyy-MM-dd");
-
-        jsCal.setOnClickListener(new View.OnClickListener() {
+        hqckCal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 goHQCKResult();
@@ -134,8 +128,20 @@ public class CalFragmentHQCK extends Fragment {
             }
         });
 
-        double benxi=inputmoney+inputmoney*yearrate*(((outputdate.getTime()
-                -inputdate.getTime())/1000/60/60/24/365));
+        inputdate=StringToDate(indate.getText().toString(),"yyyy-MM-dd");
+        inputmoney=(Double.parseDouble(jine.getText().toString().trim()))*10000;
+        yearrate=(Double.parseDouble(lilv.getText().toString().trim()))/100;
+        outputdate=StringToDate(outdate.getText().toString(),"yyyy-MM-dd");
+
+        System.out.println(inputdate);
+        System.out.println(outputdate);
+        System.out.println(inputmoney);
+        System.out.println(yearrate);
+
+        long dayNumber=(outputdate.getTime()-inputdate.getTime())/86400000;
+        System.out.println(dayNumber);
+
+        double benxi=inputmoney+inputmoney*yearrate*dayNumber/360;
         String str=String.valueOf(benxi);
         b2.setText(str);
 

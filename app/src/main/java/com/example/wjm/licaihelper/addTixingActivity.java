@@ -19,6 +19,7 @@ import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -27,7 +28,9 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -35,12 +38,13 @@ import android.widget.Toast;
 import static com.example.wjm.licaihelper.Constant.*;
 
 /**
- * Created by Yao on 2016/5/13.
+ * Created by Wjm on 2016/5/13.
  */
 public class addTixingActivity extends Activity {
+    private LinearLayout linearLayout;
     private DatePicker dateDp;
-    Dialog dialogCycle;
-    Dialog titleDialog;
+    Dialog dialogCycle;   //提醒周期
+    Dialog titleDialog;   //提醒标题
     private String titleStr="";
     private TextView titleTv;
     Calendar c;
@@ -57,7 +61,6 @@ public class addTixingActivity extends Activity {
     private int index;
     private int yearDays;
     private int monthDays;
-    List<String[]> bl=new ArrayList<String[]>();
     private int modeIndex;
     private int bellIndex;
     private TextView cycleTv;
@@ -72,9 +75,13 @@ public class addTixingActivity extends Activity {
 
         SharedPreferences bellSp=getSharedPreferences("actm", Context.MODE_PRIVATE);
         SharedPreferences modeSp=getSharedPreferences("actm2", Context.MODE_PRIVATE);
+
         modeIndex=modeSp.getInt("modeIndex",2);
         bellIndex=bellSp.getInt("bellIndex", 0);
         dateDp=(DatePicker)this.findViewById(R.id.DatePicker01);
+        linearLayout=(LinearLayout)findViewById(R.id.dateLinear);
+        linearLayout.setVisibility(View.GONE);
+
         c =Calendar.getInstance();
         int inityear =c.get(Calendar.YEAR);  //得到当前年份
         int initmonth=c.get(Calendar.MONTH);  //得到当前月份
@@ -82,19 +89,22 @@ public class addTixingActivity extends Activity {
         year2=inityear;
         month=initmonth;
         day=initday;
+
+
         dateDp.init(inityear, initmonth, initday, new DatePicker.OnDateChangedListener() {
 
             @Override
             public void onDateChanged(DatePicker view, int year, int monthOfYear,
                                       int dayOfMonth) {
-                year2=year;
-                month=monthOfYear;
-                day=dayOfMonth;
+                year2 = year;
+                month = monthOfYear;
+                day = dayOfMonth;
             }
         });
 
+
         //初始化提醒数据库
-        temp=DBUtil.getTiXingTitle("tixingtitle");
+        temp= DBUtil.getTiXingTitle("tixingtitle");
        if(temp==null){
             for(int i=0;i<titleContent.length;i++){
                 DBUtil.insertTiXingTitle(titleContent[i],"tixingtitle");
@@ -285,13 +295,24 @@ public class addTixingActivity extends Activity {
                 );
                 break;
             case CYCLE_DIALOG:
-                final CharSequence[] cycleitems = {"仅一次", "每天", "每周","每月","每年"};
-                AlertDialog.Builder builder = new AlertDialog.Builder(addTixingActivity.this);
+                final CharSequence[] cycleitems = {"仅一次", "每天", "工作日","每月","每年"};
+                final AlertDialog.Builder builder = new AlertDialog.Builder(addTixingActivity.this);
                 builder.setTitle("设置提醒周期");
                 builder.setSingleChoiceItems(cycleitems, -1, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int item) {
                         //Toast.makeText(getApplicationContext(), items[item], Toast.LENGTH_SHORT).show();
                         index=item;
+                        switch (item){
+                            case 0:
+                            case 1:
+                            case 2:
+                                linearLayout.setVisibility(View.GONE);
+                                break;
+                            case 3:
+                            case 4:
+                                linearLayout.setVisibility(View.VISIBLE);
+                                break;
+                        }
                         cycleTv=(TextView)findViewById(R.id.TextView02);
                         dialogCycle.dismiss();
                         cycleTv.setText(cycleitems[item]);
@@ -313,12 +334,12 @@ public class addTixingActivity extends Activity {
                     cancelAlarm();
                 }
                 else{
-                    Intent intent = new Intent(addTixingActivity.this, CallAlarm.class);
+                    Intent intent=new Intent(addTixingActivity.this, CallAlarm.class);
                     intent.putExtra("eventid",id);
                     intent.putExtra("modeIndex",modeIndex);
                     intent.putExtra("bellIndex",bellIndex);
                     PendingIntent sender=PendingIntent.getBroadcast(addTixingActivity.this,id, intent, 0);
-                    am = (AlarmManager)getSystemService(ALARM_SERVICE);
+                    am=(AlarmManager)getSystemService(ALARM_SERVICE);
                     am.set(AlarmManager.RTC_WAKEUP,
                             date.getTime(),
                             sender
@@ -326,7 +347,6 @@ public class addTixingActivity extends Activity {
                 }
                 break;
             case 1:
-
                 if(date.before(new Date(System.currentTimeMillis()))){
                     Intent intent = new Intent(addTixingActivity.this, CallAlarm.class);
                     intent.putExtra("eventid",id);

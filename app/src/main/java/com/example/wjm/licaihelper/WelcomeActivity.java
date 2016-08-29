@@ -8,10 +8,10 @@ import android.view.Window;
 import android.view.WindowManager;
 
 /**
- * Created by Yao on 2016/5/12.
+ * Created by Wjm on 2016/5/12.
  */
 public class WelcomeActivity extends Activity {
-    private final long SPLASH_LENGTH = 3000;
+    private final long SPLASH_LENGTH = 1200;
     Handler handler = new Handler();
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +24,7 @@ public class WelcomeActivity extends Activity {
                 startActivity(intent);
                 finish();
             }
-        }, SPLASH_LENGTH);//2秒后跳转至应用主界面MainActivity
+        }, SPLASH_LENGTH);//1.2秒后跳转至应用主界面MainActivity
 
     }
 }

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:background="@drawable/back"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout
@@ -13,8 +12,8 @@
 
         <Button
             android:id="@+id/fanhui"
-            android:layout_width="26dp"
-            android:layout_height="26dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:background="@drawable/fanhui"
             android:layout_marginLeft="20dp"
             android:layout_gravity="center_vertical"/>
@@ -54,12 +53,22 @@
             android:background="@drawable/editsharptranparent">
         </Button>
     </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@color/black"/>
+
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="30dp"
         android:layout_weight="2"
+        android:gravity="center|left"
         android:layout_marginTop="20dp">
         <TextView
             android:text="铃声音量"
@@ -77,6 +86,15 @@
             android:progress="50">
         </SeekBar>
     </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@color/black"/>
+
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -119,4 +137,6 @@
                 android:textSize="16dp"/>
         </RadioGroup>
     </LinearLayout>
+
+
 </LinearLayout>

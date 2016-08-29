@@ -96,6 +96,7 @@
                 android:layout_marginLeft="80dip"
                 android:layout_marginTop="1dip"
                 android:layout_gravity="center"
+                android:inputType="number"
                 android:background="@drawable/text"
                 android:gravity="center">
             </EditText>
@@ -181,6 +182,7 @@
                 android:layout_height="35dp"
                 android:layout_marginLeft="97dp"
                 android:layout_marginTop="1dp"
+                android:inputType="number"
                 android:layout_gravity="center"
                 android:background="@drawable/text"
                 android:gravity="center">
@@ -256,6 +258,16 @@
                 android:gravity="center">
             </Button>
         </LinearLayout>
+
+        <Button
+            android:id="@+id/tqhkCal"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/btnshapcolor"
+            android:text="计算"/>
     </LinearLayout>
 
 </LinearLayout>

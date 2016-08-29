@@ -3,8 +3,7 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:orientation="vertical"
-	android:background="@drawable/back">
+	android:orientation="vertical">
 
 	<LinearLayout
 		android:layout_width="match_parent"
@@ -15,8 +14,8 @@
 
 		<Button
 			android:id="@+id/back"
-			android:layout_width="26dp"
-			android:layout_height="26dp"
+			android:layout_width="20dp"
+			android:layout_height="20dp"
 			android:background="@drawable/fanhui"
 			android:layout_marginLeft="20dp"
 			android:layout_gravity="center_vertical"/>
@@ -153,12 +152,12 @@
 		android:layout_height="50dip">
 
 		<Button
-			android:text="显示报表列表"
+			android:text="显示报表"
 			android:gravity="center"
 			android:id="@+id/baobiao"
 			android:layout_width="85dip"
 			android:layout_height="40dip"
-			android:background="@drawable/btnshap"
+			android:background="@drawable/btnshapcolor"
 			>
 		</Button>
 	</LinearLayout>

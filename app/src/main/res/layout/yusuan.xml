@@ -3,7 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back"
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
@@ -16,8 +15,8 @@
 
         <Button
             android:id="@+id/fanhui"
-            android:layout_width="26dp"
-            android:layout_height="26dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:background="@drawable/fanhui"
             android:layout_marginLeft="20dp"
             android:layout_gravity="center_vertical"/>
@@ -39,8 +38,6 @@
         android:id="@+id/zysLayout"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:background="@color/gray"
-        android:alpha="20"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -91,6 +88,12 @@
         </LinearLayout>
     </LinearLayout>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"/>
 
     <ListView
         android:id="@+id/ListView01"

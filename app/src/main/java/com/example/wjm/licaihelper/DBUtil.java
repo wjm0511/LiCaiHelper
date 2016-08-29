@@ -56,7 +56,6 @@ public class DBUtil {
                     "("+
                     "id integer primary key,"+
                     "amount double  "+
-
                     ")";
             String sql07="create table if not exists yusuanyue"+
                     "("+
@@ -284,24 +283,6 @@ public class DBUtil {
         return list;
     }
     public static void updateDetail(int id,long benxi,long lixi,long benjin,long yubenjin,String tableName)
-    {   SQLiteDatabase sld=null;
-        try
-        {   sld=createOrOpenDatabase();
-            String sql="update '"+tableName+"' set benxi='"+benxi+"',lixi='"+lixi+"',benjin='"+benjin+"',yubenjin='"+yubenjin+"' where id='"+id+"';";
-            sld.execSQL(sql);
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }
-        finally
-        {
-            try{closeDatabase(sld);}catch(Exception e){e.printStackTrace();}
-        }
-    }
-
-
-    public static void updateTq(int id,double benxi,double lixi,double benjin,double yubenjin,String tableName)
     {   SQLiteDatabase sld=null;
         try
         {   sld=createOrOpenDatabase();

@@ -71,6 +71,8 @@
                     android:layout_height="35dp"
                     android:layout_marginLeft="89dp"
                     android:layout_marginTop="5dp"
+                    android:cursorVisible="false"
+                    android:inputType="number"
                     android:layout_gravity="center"
                     android:background="@drawable/text"
                     android:gravity="center">
@@ -157,6 +159,8 @@
                     android:layout_height="35dp"
                     android:layout_marginLeft="89dp"
                     android:layout_marginTop="5dp"
+                    android:cursorVisible="false"
+                    android:inputType="number"
                     android:layout_gravity="center"
                     android:background="@drawable/text"
                     android:gravity="center">
@@ -204,7 +208,18 @@
                     android:gravity="center">
                 </Button>
 
+
+
             </LinearLayout>
+            <Button
+                android:id="@+id/zfdkCal"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/btnshapcolor"
+                android:text="计算"/>
 
         </LinearLayout>
 

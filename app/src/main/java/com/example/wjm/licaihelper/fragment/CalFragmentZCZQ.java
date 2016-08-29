@@ -21,7 +21,7 @@ import com.example.wjm.licaihelper.R;
 import java.util.Calendar;
 
 /**
- * Created by Yao on 2016/5/20.
+ * Created by Wjm on 2016/5/20.
  */
 public class CalFragmentZCZQ extends Fragment {
 
@@ -34,7 +34,7 @@ public class CalFragmentZCZQ extends Fragment {
 
     private float durdate; //存款时间
 
-    private TextView jsCal;
+    private Button zczqCal;
 
 
     public CalFragmentZCZQ() {
@@ -46,7 +46,7 @@ public class CalFragmentZCZQ extends Fragment {
         savetime=(Button)view.findViewById(R.id.threemonth);
         jine=(EditText)view.findViewById(R.id.jine);
         lilv=(EditText)view.findViewById(R.id.lilv);
-        jsCal=(TextView)getActivity().findViewById(R.id.jscal);
+        zczqCal=(Button)view.findViewById(R.id.zczqCal);
 
         savetime.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,33 +60,14 @@ public class CalFragmentZCZQ extends Fragment {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         //对话框关闭时的业务代码
-                                        switch (which) {
-                                            case 0:
-                                                durdate = (float) 3 / 12;
-                                                break;
-                                            case 1:
-                                                durdate = (float) 6 / 12;
-                                                break;
-                                            case 2:
-                                                durdate = 1;
-                                                break;
-                                            case 3:
-                                                durdate = 2;
-                                                break;
-                                            case 4:
-                                                durdate = 3;
-                                                break;
-                                            case 5:
-                                                durdate = 5;
-                                                break;
-                                        }
+                                        savetime.setText(getResources().getStringArray(R.array.ll_array)[which]);
                                     }
                                 }
                         ).create().show();
             }
         });
 
-        jsCal.setOnClickListener(new View.OnClickListener() {
+        zczqCal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if((Double.parseDouble(jine.getText().toString()))*10000<50)
@@ -95,8 +76,6 @@ public class CalFragmentZCZQ extends Fragment {
                 }
                 else
                 {
-                    inputmoney=Double.parseDouble(jine.getText().toString())*10000;
-                    yearrate=(Double.parseDouble(lilv.getText().toString()))/100;
                     goZCZQResult();
                 }
             }
@@ -117,10 +96,29 @@ public class CalFragmentZCZQ extends Fragment {
                 dialog.dismiss();
             }
         });
+
+        durdate=getYear(savetime.getText().toString().trim());
+        inputmoney=Double.parseDouble(jine.getText().toString())*10000;
+        yearrate=(Double.parseDouble(lilv.getText().toString()))/100;
         double benxi=inputmoney*(1+yearrate*durdate);
         String str=String.valueOf(benxi);
         b1.setText(str);
         dialog.create();
         dialog.show();
+    }
+
+    private static float getYear(String str){
+        if (str.equals("三个月"))
+            return (float)0.25*1;
+        else if (str.equals("半年"))
+            return (float)0.5*1;
+        else if (str.equals("一年"))
+            return 1;
+        else if (str.equals("两年"))
+            return 2;
+        else if (str.equals("三年"))
+            return 3;
+        else
+            return 5;
     }
 }

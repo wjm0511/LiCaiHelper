@@ -13,7 +13,7 @@ import com.example.wjm.licaihelper.fragment.CalFragmentZCZQ;
 import com.example.wjm.licaihelper.fragment.CalFragmentZFDK;
 
 /**
- * Created by Yao on 2016/5/20.
+ * Created by Wjm on 2016/5/20.
  */
 public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
     private final int PAGER_COUNT = 6;
@@ -21,8 +21,8 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
     private CalFragmentTQHK fragmentTQHK = null;
     private CalFragmentHQCK fragmentHQCK = null;
     private CalFragmentLCZQ fragmentLCZQ = null;
-    private CalFragmentZCZQ fragmentZCZQ = null;
     private CalFragmentZCLQ fragmentZCLQ = null;
+    private CalFragmentZCZQ fragmentZCZQ = null;
 
 
     public MyFragmentPagerAdapter(FragmentManager fm) {
@@ -31,8 +31,8 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
         fragmentTQHK = new CalFragmentTQHK();
         fragmentHQCK = new CalFragmentHQCK();
         fragmentLCZQ = new CalFragmentLCZQ();
-        fragmentZCZQ=new CalFragmentZCZQ();
-        fragmentZCLQ=new CalFragmentZCLQ();
+        fragmentZCLQ = new CalFragmentZCLQ();
+        fragmentZCZQ = new CalFragmentZCZQ();
     }
 
 
@@ -48,7 +48,6 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-        //System.out.println("position Destory" + position);
         super.destroyItem(container, position, object);
     }
 
@@ -69,10 +68,10 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
                 fragment = fragmentLCZQ;
                 break;
             case JisuanActivity.PAGE_FIVE:
-                fragment = fragmentZCZQ;
+                fragment = fragmentZCLQ;
                 break;
             case JisuanActivity.PAGE_SIX:
-                fragment = fragmentZCLQ;
+                fragment = fragmentZCZQ;
                 break;
         }
         return fragment;

@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.content.BroadcastReceiver;
 
 /**
- * Created by wjm on 2016/5/13.
+ * Created by Wjm on 2016/5/13.
  */
 
 public class CallAlarm extends BroadcastReceiver

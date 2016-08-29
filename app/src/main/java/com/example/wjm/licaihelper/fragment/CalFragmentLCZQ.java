@@ -29,7 +29,7 @@ public class CalFragmentLCZQ extends Fragment {
     private EditText jine; //每月存入金额
     private EditText lilv; //利率
 
-    private TextView jsCal;
+    private Button lczqCal;
 
     private int durdate; //存款时间
     private double inputmoney; //存入金额
@@ -45,7 +45,7 @@ public class CalFragmentLCZQ extends Fragment {
         savetime=(Button)view.findViewById(R.id.year);
         jine=(EditText)view.findViewById(R.id.jine);
         lilv=(EditText)view.findViewById(R.id.lilv);
-        jsCal=(TextView)getActivity().findViewById(R.id.jscal);
+        lczqCal=(Button)view.findViewById(R.id.lczqCal);
 
         savetime.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,25 +61,13 @@ public class CalFragmentLCZQ extends Fragment {
                             public void onClick(DialogInterface dialog, int which) {
                                 //对话框关闭时的业务代码
                                 savetime.setText(getResources().getStringArray(R.array.sl_array)[which]);
-                                switch(which)
-                                {
-                                    case 0:
-                                        durdate=1*12;
-                                        break;
-                                    case 1:
-                                        durdate=3*12;
-                                        break;
-                                    case 2:
-                                        durdate=5*12;
-                                        break;
-                                }
                             }
                         }
                 ).create().show();
             }
         });
 
-        jsCal.setOnClickListener(new View.OnClickListener() {
+        lczqCal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if((Double.parseDouble(jine.getText().toString()))*10000<5)
@@ -88,9 +76,6 @@ public class CalFragmentLCZQ extends Fragment {
                 }
                 else
                 {
-                    inputmoney=Double.parseDouble(jine.getText().toString())*10000;
-                    yearrate=(Double.parseDouble(lilv.getText().toString()))/100;
-                    monthrate=yearrate/12;
                     goLCZQResult();
                 }
             }
@@ -105,6 +90,17 @@ public class CalFragmentLCZQ extends Fragment {
         dialog.setContentView(R.layout.lczqresult);
         Button b1=(Button)dialog.findViewById(R.id.Button01);
         Button b2=(Button)dialog.findViewById(R.id.Button03);
+
+        inputmoney=Double.parseDouble(jine.getText().toString())*10000;
+        yearrate=(Double.parseDouble(lilv.getText().toString()))/100;
+        monthrate=yearrate/12;
+
+        String temp=savetime.getText().toString().trim();
+        durdate=parseToMonth(temp);
+
+        System.out.println(temp);
+        System.out.println(durdate);
+
         dialog.findViewById(R.id.close).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -119,5 +115,15 @@ public class CalFragmentLCZQ extends Fragment {
         b2.setText(str2);
         dialog.create();
         dialog.show();
+    }
+
+    private static int parseToMonth(String str){
+        if(str.equals("一年"))
+            return 1*12;
+        else if(str.equals("三年"))
+            return 3*12;
+        else if(str.equals("五年"))
+            return 5*12;
+        return 0;
     }
 }

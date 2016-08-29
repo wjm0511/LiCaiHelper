@@ -25,11 +25,11 @@ import java.util.Calendar;
 import java.util.List;
 
 /**
- * Created by Yao on 2016/5/20.
+ * Created by Wjm on 2016/5/20.
  */
 public class CalFragmentTQHK extends Fragment {
 
-    private TextView jsCal;
+    private Button tqhkCal;
 
     private Button ydklx;
     private Button yhkmode;
@@ -52,7 +52,6 @@ public class CalFragmentTQHK extends Fragment {
     private int dyear,dmonth;   //定义原先选择的贷款年限
     private int hkyear,hkmonth;  //定义第一次还款年月
     private int tqhkyear,tqhkmonth;  //定义提前还款年月
-    private int hkfs; //定义原贷款时选择的还款方式
 
     private double inputmoney;  //获取贷款金额
     private int durdate; //获取总的贷款月份
@@ -66,7 +65,6 @@ public class CalFragmentTQHK extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fg_tqhk_content,container,false);
-        jsCal=(TextView)getActivity().findViewById(R.id.jscal);
 
         ydklx=(Button)view.findViewById(R.id.ydklx);//原贷款类型
         yhkmode=(Button)view.findViewById(R.id.ydkmode);//原贷款方式
@@ -76,11 +74,11 @@ public class CalFragmentTQHK extends Fragment {
         lilv=(EditText)view.findViewById(R.id.lilv);   //贷款利率
         hktime=(Button)view.findViewById(R.id.hktime); //第一次还款时间
         tqhktime=(Button)view.findViewById(R.id.tqhktime);//预计提前还款时间
+        tqhkCal=(Button)view.findViewById(R.id.tqhkCal);
 
         String str=c.get(Calendar.YEAR)+"年"+(c.get(Calendar.MONTH)+1)+"月";
         hktime.setText(str);
         tqhktime.setText(str);
-
 
 
         ydklx.setOnClickListener(new View.OnClickListener() {
@@ -126,10 +124,12 @@ public class CalFragmentTQHK extends Fragment {
             }
         });
 
-        jsCal.setOnClickListener(new View.OnClickListener() {
+        tqhkCal.setOnClickListener(new View.OnClickListener() {
                                      @Override
                                      public void onClick(View v) {
                                          inputmoney = (Double.parseDouble(jine.getText().toString())) * 10000;
+                                         dyear=CalFragmentZFDK.getNumber(nian.getText().toString().trim());
+                                         dmonth=CalFragmentZFDK.getNumber(yue.getText().toString().trim());
                                          durdate = dyear * 12 + dmonth;
                                          yearrate = (Double.parseDouble(lilv.getText().toString())) / 100;
                                          if (tqhkyear > hkyear) {
@@ -165,7 +165,7 @@ public class CalFragmentTQHK extends Fragment {
         String str2;
         String str3;
         String str4;
-        if(hkfs==1){
+        if(yhkmode.getText().toString().trim()=="等额本息"){
             tqList=jsTqDengeBenxi(inputmoney,yearrate,timeinterval,durdate);
 
             returnsum=tqList.get(0);
@@ -265,11 +265,9 @@ public class CalFragmentTQHK extends Fragment {
                                         {
                                             case 0:
                                                 ydklx.setText(getResources().getStringArray(R.array.houselt_array)[0]);
-
                                                 break;
                                             case 1:
                                                 ydklx.setText(getResources().getStringArray(R.array.houselt_array)[1]);
-
                                                 break;
                                         }
                                     }
@@ -288,14 +286,6 @@ public class CalFragmentTQHK extends Fragment {
                                     public void onClick(DialogInterface dialog, int which) {
                                         //对话框关闭时的业务代码
                                         yhkmode.setText(getResources().getStringArray(R.array.opaytype_array)[which]);
-                                        switch (which) {
-                                            case 0:
-                                                hkfs = 1;
-                                                break;
-                                            case 1:
-                                                hkfs = 2;
-                                                break;
-                                        }
                                     }
                                 }
                         ).create().show();
@@ -312,7 +302,6 @@ public class CalFragmentTQHK extends Fragment {
                                     public void onClick(DialogInterface dialog, int which) {
                                         //对话框关闭时的业务代码
                                         nian.setText(getResources().getStringArray(R.array.year_array)[which]);
-                                        dyear =  which + 1;
                                     }
                                 }
                         ).create().show();
@@ -328,7 +317,6 @@ public class CalFragmentTQHK extends Fragment {
                                     public void onClick(DialogInterface dialog, int which) {
                                         //对话框关闭时的业务代码
                                         yue.setText(getResources().getStringArray(R.array.month_array)[which]);
-                                        dmonth=which+1;
                                     }
                                 }
                         ).create().show();
@@ -344,7 +332,6 @@ public class CalFragmentTQHK extends Fragment {
                         c.set(arg1, arg2, arg3);
                         //设置系统时间
                         boolean b= SystemClock.setCurrentTimeMillis(c.getTimeInMillis());
-                        System.out.println("date: " + b);
                         hktime.setText(""+arg1+"年"+(arg2+1)+"月");
                         hkyear=arg1;
                         hkmonth=arg2+1;
@@ -366,7 +353,6 @@ public class CalFragmentTQHK extends Fragment {
                         c.set(arg1, arg2, arg3);
                         //设置系统时间
                         boolean b=SystemClock.setCurrentTimeMillis(c.getTimeInMillis());
-                        System.out.println("date: "+b);
                         tqhktime.setText(""+arg1+"年"+(arg2+1)+"月");
                         tqhkyear=arg1;
                         tqhkmonth=arg2+1;

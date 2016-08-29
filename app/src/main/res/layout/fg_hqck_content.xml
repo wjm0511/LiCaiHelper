@@ -71,6 +71,7 @@
                 android:layout_width="55dp"
                 android:layout_height="35dp"
                 android:layout_marginLeft="80dp"
+                android:inputType="number"
                 android:layout_marginTop="1dp"
                 android:layout_gravity="center"
                 android:background="@drawable/text"
@@ -116,6 +117,7 @@
                 android:layout_width="55dp"
                 android:layout_height="35dp"
                 android:layout_marginLeft="97dp"
+                android:inputType="number"
                 android:layout_marginTop="1dp"
                 android:layout_gravity="center"
                 android:background="@drawable/text"
@@ -167,6 +169,16 @@
                 >
             </Button>
         </LinearLayout>
+
+        <Button
+            android:id="@+id/hqckCal"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/btnshapcolor"
+            android:text="计算"/>
 
     </LinearLayout>
 

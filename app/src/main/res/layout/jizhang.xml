@@ -3,8 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:background="@drawable/back">
+    android:gravity="center_horizontal">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,8 +14,8 @@
 
         <Button
             android:id="@+id/fanhui"
-            android:layout_width="26dp"
-            android:layout_height="26dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:background="@drawable/fanhui"
             android:layout_marginLeft="20dp"
             android:layout_gravity="center_vertical"/>
@@ -221,16 +220,16 @@
             <Button
                 android:id="@+id/savebtn"
                 android:layout_width="80dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:text="@string/baocun"
-                android:background="@drawable/btnshap" />
+                android:background="@drawable/btnshapcolor" />
             <Button
                 android:id="@+id/againbtn"
                 android:layout_width="80dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginLeft="40dp"
                 android:text="@string/again"
-                android:background="@drawable/btnshap" />
+                android:background="@drawable/btnshapcolor" />
 
         </LinearLayout>
 

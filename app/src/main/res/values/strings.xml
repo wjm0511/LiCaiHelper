@@ -115,7 +115,6 @@
 
 
 
-    <string name="jijin">公基金</string>
     <string name="zuhe">组合型</string>
     <string name="jijinmoney">公基金贷款金额</string>
     <string name="jijinrate">公基金贷款利率</string>
@@ -186,4 +185,12 @@
     <string name="jizhang">新增账务</string>
     <string name="sz">收支</string>
     <string name="dianji"> 点击插入日期</string>
+
+    <!--计算器页面-->
+    <string name="zfdk">住房贷款</string>
+    <string name="tqhk">提前还款</string>
+    <string name="hqck">活期存款</string>
+    <string name="lczq">零存整取</string>
+    <string name="zclq">整存零取</string>
+    <string name="zczq">整存整取</string>
 </resources>

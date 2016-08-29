@@ -37,7 +37,6 @@ import com.baidu.mapapi.model.inner.GeoPoint;
 
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -50,6 +49,7 @@ public class ZujiActivity extends Activity implements View.OnClickListener {
     private MapView mapView;
     private LinearLayout menu;//由LinearLayout布局的菜单
     private Boolean menushowed;//是否显示菜单
+    private BaiduMap bdMap;
 
     Calendar c= Calendar.getInstance();
     int cur_year=c.get(Calendar.YEAR);
@@ -71,6 +71,9 @@ public class ZujiActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.zuji);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         mapView=(MapView)findViewById(R.id.myMapView);
+        MapStatusUpdate msu=MapStatusUpdateFactory.zoomTo(15.0f);
+        bdMap=mapView.getMap();
+        bdMap.setMapStatus(msu);
 
 
         curdate=cur_year+"-"+(cur_month>9?cur_month:"0"+cur_month);//当前日期
@@ -183,7 +186,7 @@ public class ZujiActivity extends Activity implements View.OnClickListener {
     {
         TextView dateText=(TextView)findViewById(R.id.datemenu);
         String datetemp=dateText.getText().toString();
-        List<String[]> addresszhichu=new ArrayList<String[]>();
+        List<String[]> addresszhichu=null;
         if(!(datetemp.equals("全部交易")))
         {
             int yeartemp=Integer.parseInt(date.substring(0,4));
@@ -192,7 +195,6 @@ public class ZujiActivity extends Activity implements View.OnClickListener {
             String datefirst=datetemp+"-"+01;
             String dateend=datetemp+"-"+days;
             addresszhichu=DBUtil.searchAddressZhichu(datefirst, dateend);
-            //Toast.makeText(this, datefirst+" "+dateend, Toast.LENGTH_SHORT).show();
         }
         else
         {
@@ -207,18 +209,13 @@ public class ZujiActivity extends Activity implements View.OnClickListener {
 
         addresses=new String[addresszhichu.size()];
         money=new float[addresszhichu.size()];
-        String[] str= {""};
-        String temp="";
-        for(int i=0;i<addresszhichu.size();i++)
-        {
+
+        String[] str=null;
+        for(int i=0;i<addresszhichu.size();i++){
             str=addresszhichu.get(i);
             addresses[i]=str[0];
             money[i]=Float.parseFloat(str[1]);
-            temp=temp+addresses[i]+" 支出："+money[i]+"  ";
-            System.out.println(addresses[i]+"支出"+money[i]);
         }
-        //Toast.makeText(this, addresszhichu.size() + "", Toast.LENGTH_SHORT).show();
-        //Toast.makeText(this, temp, Toast.LENGTH_SHORT).show();
     }
 
     public void initMap()
@@ -226,7 +223,6 @@ public class ZujiActivity extends Activity implements View.OnClickListener {
 
         //对地图进行初始化
         mapView.showZoomControls(true);  //设置地图上要缩放控制条
-        final BaiduMap mMap=mapView.getMap();
 
         for(int i=0;i<addresses.length;i++)
         {
@@ -252,28 +248,23 @@ public class ZujiActivity extends Activity implements View.OnClickListener {
                     BitmapDescriptor bitmap=BitmapDescriptorFactory
                             .fromResource(R.drawable.zj_ballon);
 
-                    Marker marker=null;
+
                     OverlayOptions option=new MarkerOptions()
                             .position(point)
                             .icon(bitmap);
-                    marker=(Marker)(mMap.addOverlay(option));
 
+                    Marker marker=(Marker)bdMap.addOverlay(option);
                     //将该点信息存入Bundle中
+
                     Info info=new Info(addresses[i],money[i]);
-                    //System.out.println(info.add+" "+info.spend);
+                    System.out.println(info.add + " " + info.spend);
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("info", info);
                     marker.setExtraInfo(bundle);
 
-                    mMap.addOverlay(option);
-
-                    mMap.setOnMarkerClickListener(new BaiduMap.OnMarkerClickListener() {
+                    bdMap.setOnMarkerClickListener(new BaiduMap.OnMarkerClickListener() {
                         @Override
                         public boolean onMarkerClick(Marker marker) {
-                            TextView location = new TextView(getApplicationContext());
-                            location.setPadding(15, 15, 8, 35);
-                            location.setTextColor(Color.BLUE);
-                            location.setBackground(getResources().getDrawable(R.drawable.editsharp));
 
                             //得到传来的Bundle信息
                             Bundle bundle1 = marker.getExtraInfo();
@@ -281,27 +272,32 @@ public class ZujiActivity extends Activity implements View.OnClickListener {
                             String add = info1.add;
                             float spend = info1.spend;
 
-                            location.setText("地点:" + add + "\n支出:" + spend);
+                            TextView location = new TextView(getApplicationContext());
+                            location.setPadding(15, 15, 8, 35);
+                            location.setTextColor(Color.BLUE);
+                            location.setBackground(getResources().getDrawable(R.drawable.editsharp));
+
                             location.setLayoutParams(new ViewGroup.LayoutParams(android.view.ViewGroup.LayoutParams.WRAP_CONTENT,
                                     android.view.ViewGroup.LayoutParams.WRAP_CONTENT));
                             location.setGravity(Gravity.CENTER | Gravity.LEFT);
                             location.setTextSize(14);
+                            location.setText("地点:" + add + "\n支出:" + spend+"元");
 
                             // 将marker所在的经纬度的信息转化成屏幕上的坐标
-                            final LatLng ll = marker.getPosition();
-                            Point p = mMap.getProjection().toScreenLocation(ll);
-                            LatLng llInfo = mMap.getProjection().fromScreenLocation(p);
+                            LatLng ll = marker.getPosition();
+                            Point p = bdMap.getProjection().toScreenLocation(ll);
+                            LatLng llInfo = bdMap.getProjection().fromScreenLocation(p);
                             // 为弹出的InfoWindow添加点击事件
                             InfoWindow m = new InfoWindow(location, llInfo, -100);
                             // 显示最后一条的InfoWindow
-                            mMap.showInfoWindow(m);
+                            bdMap.showInfoWindow(m);
                             return true;
                         }
                     });
                     //将地图移到最后一个经纬度位置
                     LatLng latLng=new LatLng(latVal,longVal);
                     MapStatusUpdate u = MapStatusUpdateFactory.newLatLng(latLng);
-                    mMap.setMapStatus(u);
+                    bdMap.animateMapStatus(u);
                 }
                 else
                 {
@@ -404,12 +400,14 @@ public class ZujiActivity extends Activity implements View.OnClickListener {
         return 0;
     }
 
-    private class Info implements Serializable {
-        String add;
-        float spend;
-        public Info(String add,float spend){
-            this.add=add;
-            this.spend=spend;
-        }
+
+}
+
+class Info implements Serializable {
+    public String add;
+    public float spend;
+    public Info(String add,float spend){
+        this.add=add;
+        this.spend=spend;
     }
 }

@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.wjm.licaihelper.DBUtil;
 import com.example.wjm.licaihelper.DEBJDetailActivity;
@@ -19,7 +20,7 @@ import com.example.wjm.licaihelper.DEBXDetailActivity;
 import com.example.wjm.licaihelper.R;
 
 /**
- * Created by Yao on 2016/5/20.
+ * Created by Wjm on 2016/5/20.
  */
 public class CalFragmentZFDK extends Fragment{
 
@@ -28,11 +29,11 @@ public class CalFragmentZFDK extends Fragment{
     private final int shangdaiHKmode=3;
     private final int JijinHKmode=4;
 
-    private int dYear,dMonth,hkfs;
+    private int dYear,dMonth;
 
     private Button daikuan,nian,yue,hkmode;
     private EditText lilv,jine;
-    private TextView jsCal;
+    private Button zfdkCal;
 
     public CalFragmentZFDK() {
     }
@@ -48,39 +49,59 @@ public class CalFragmentZFDK extends Fragment{
         yue=(Button)view.findViewById(R.id.yue);
         lilv=(EditText)view.findViewById(R.id.lilv);
         hkmode=(Button)view.findViewById(R.id.hkmode);
-        jsCal=(TextView)getActivity().findViewById(R.id.jscal);
+        zfdkCal=(Button)view.findViewById(R.id.zfdkCal);
+
+        jine.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                jine.setCursorVisible(true);
+            }
+        });
+
+        lilv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                lilv.setCursorVisible(true);
+            }
+        });
 
         daikuan.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         new AlertDialog.Builder(getActivity())
-                        .setIcon(R.drawable.item)//设置图标
-                        .setTitle(R.string.lt)//设置标题
-                        .setItems(
-                                R.array.houselt_array,
-                                new DialogInterface.OnClickListener()
-                                {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                       switch(which)
+                                .setIcon(R.drawable.item)//设置图标
+                                .setTitle(R.string.lt)//设置标题
+                                .setItems(
+                                        R.array.houselt_array,
+                                        new DialogInterface.OnClickListener()
                                         {
-                                            case 0:
-                                                daikuan.setText(getResources().getStringArray(R.array.houselt_array)[0]);
-                                                goShangDaiCal();
-                                                break;
-                                            case 1:
-                                                daikuan.setText(getResources().getStringArray(R.array.houselt_array)[1]);
-                                                goJiJinCal();
-                                                break;
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                switch(which)
+                                                {
+                                                    case 0:
+                                                        daikuan.setText(getResources().getStringArray(R.array.houselt_array)[0]);
+                                                        break;
+                                                    case 1:
+                                                        daikuan.setText(getResources().getStringArray(R.array.houselt_array)[1]);
+                                                        break;
+                                                }
+                                            }
                                         }
-                                    }
-                                }
-                        )
-                        .create().show();
+                                )
+                                .create().show();
                     }
                 }
         );
+
+        String daikuanStyle=daikuan.getText().toString().trim();
+        if (daikuanStyle == "商业贷款") {
+            goShangDaiCal();
+        } else {
+            goJiJinCal();
+        }
+
         return view;
     }
 
@@ -103,7 +124,7 @@ public class CalFragmentZFDK extends Fragment{
                 showDialog(shangdaiHKmode);
             }
         });
-        jsCal.setOnClickListener(new View.OnClickListener() {
+        zfdkCal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 goShangDaiResult();
@@ -131,7 +152,7 @@ public class CalFragmentZFDK extends Fragment{
                 showDialog(JijinHKmode);
             }
         });
-        jsCal.setOnClickListener(new View.OnClickListener() {
+        zfdkCal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 goJiJinResult();
@@ -144,9 +165,13 @@ public class CalFragmentZFDK extends Fragment{
         float yearrate=Float.parseFloat(lilv.getText().toString().trim())/100;
         double ratesum; //累计支付利息
         double sum; //累计还款总额
+        String dYearStr=nian.getText().toString().trim();
+        String dMonthStr=yue.getText().toString().trim();
+        dYear=getNumber(dYearStr);
+        dMonth=getNumber(dMonthStr);
         int durdate=dYear*12+dMonth;
 
-        if(hkfs==1)
+        if(hkmode.getText().toString().trim()=="等额本息")
         {
             DBUtil.deleteAllFromTable("dengebenxidetail");
             for(int i=1;i<=durdate;i++){
@@ -167,16 +192,23 @@ public class CalFragmentZFDK extends Fragment{
             ratesum=jsDengeBenjin(inputmoney,yearrate,durdate);
             sum=ratesum+inputmoney;
         }
-        showResultDialog(ratesum,sum);
+        showResultDialog(ratesum, sum);
     }
 
     private void goJiJinResult(){
+        if(jine.getText().toString()==null||lilv.getText().toString()==null){
+            Toast.makeText(getContext(),"请输入完整的计算参数",Toast.LENGTH_SHORT).show();
+        }
         double inputmoney=Double.parseDouble(jine.getText().toString().trim())*10000;
         float yearrate=Float.parseFloat(lilv.getText().toString().trim())/100;
         double ratesum;
         double sum;
+        String dYearStr=nian.getText().toString().trim();
+        String dMonthStr=yue.getText().toString().trim();
+        dYear=getNumber(dYearStr);
+        dMonth=getNumber(dMonthStr);
         int durdate=dYear*12+dMonth;
-        if(hkfs==1)
+        if(hkmode.getText().toString().trim()=="等额本息")
         {
             DBUtil.deleteAllFromTable("dengebenxidetail");
             for(int i=1;i<=durdate;i++){
@@ -236,6 +268,12 @@ public class CalFragmentZFDK extends Fragment{
         return interestPayment;
     }
 
+    public static int getNumber(String str){
+        int length=str.length();
+        String strTemp=str.substring(0, length - 1);
+        return Integer.parseInt(strTemp);
+    }
+
     public void showDialog(int dialog){
         switch (dialog){
             case nianDialog:
@@ -249,7 +287,6 @@ public class CalFragmentZFDK extends Fragment{
                             public void onClick(DialogInterface dialog, int which) {
                                 //对话框关闭时的业务代码
                                 nian.setText(getResources().getStringArray(R.array.year_array)[which]);
-                                dYear =  which + 1;
                             }
                         }
                 ).create().show();
@@ -265,7 +302,6 @@ public class CalFragmentZFDK extends Fragment{
                             public void onClick(DialogInterface dialog, int which) {
                                 //对话框关闭时的业务代码
                                 yue.setText(getResources().getStringArray(R.array.month_array)[which]);
-                                dMonth=which+1;
                             }
                         }
                 ).create().show();
@@ -281,14 +317,6 @@ public class CalFragmentZFDK extends Fragment{
                             public void onClick(DialogInterface dialog, int which) {
                                 //对话框关闭时的业务代码
                                 hkmode.setText(getResources().getStringArray(R.array.opaytype_array)[which]);
-                                switch (which) {
-                                    case 0:
-                                        hkfs=1;
-                                        break;
-                                    case 1:
-                                        hkfs=2;
-                                        break;
-                                }
                             }
                         }
                 ).create().show();
@@ -329,7 +357,7 @@ public class CalFragmentZFDK extends Fragment{
         detail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(hkfs==1) {
+                if(hkmode.getText().toString().trim()=="等额本息") {
                     Intent intent = new Intent();
                     intent.setClass(getActivity(), DEBXDetailActivity.class);
                     startActivity(intent);
